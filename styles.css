@@ -10,7 +10,6 @@ body {
   color: #3a3a3a;
   min-height: 100vh;
   background: #fff2b3;
-  cursor: none;
 }
 
 /* overlay botão abrir */
@@ -71,12 +70,4 @@ h1 {
   margin-top: 40px;
   text-align: right;
   font-style: italic;
-}
-
-/* cursor patinha */
-.cursor {
-  position: absolute;
-  font-size: 24px;
-  pointer-events: none;
-  z-index: 9999;
 }
