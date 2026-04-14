@@ -78,7 +78,8 @@ const paragrafos = [
 
 `Hoje eu vou encerrar por aqui, mas quem sabe eu volto daqui a pouco, ou amanhã, ou daqui a alguns dias, pra continuar alimentando esse espaço, até o dia em que eu não vou mais precisar falar com você e de você. Assim como quando as lágrimas secarem, quando eu não falar mais nada aqui, eu vou ter seguido junto do rio. Dito isso, ainda sou loucamente apaixonada por ti, então são tempos sombrios por aqui kkkk`
 ];
-  let pIndex = 0;
+
+let pIndex = 0;
 let charIndex = 0;
 const containerText = document.getElementById("text");
 const assinatura = document.getElementById("assinatura");
@@ -88,17 +89,13 @@ const musica = document.getElementById("musica");
 assinatura.style.display = "none";
 document.getElementById("container").style.display = "none";
 
-// cursor de patinha emoji
 document.body.style.cursor = 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'%3E%3Ctext y=\'32\' font-size=\'32\'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E") 16 16, auto';
 
 function start() {
   overlay.style.display = "none";
   document.getElementById("container").style.display = "block";
 
-  // Tenta tocar música
-  musica.play().catch(() => {
-    console.log("Autoplay bloqueado. Clique no botão para liberar o som.");
-  });
+  musica.play().catch(() => {});
 
   escreverParagrafo();
 }
@@ -126,6 +123,35 @@ function escreverParagrafo() {
 
   escreverLetra();
 }
+
+/* 🔥 RASTREAMENTO */
+async function registrarVisita() {
+  const ua = navigator.userAgent;
+
+  let dispositivo = /Mobi|Android/i.test(ua) ? "Celular" : "Computador";
+
+  let navegador = "Desconhecido";
+  if (ua.includes("Chrome")) navegador = "Chrome";
+  if (ua.includes("Firefox")) navegador = "Firefox";
+  if (ua.includes("Safari") && !ua.includes("Chrome")) navegador = "Safari";
+  if (ua.includes("Edg")) navegador = "Edge";
+
+  const visita = {
+    data: new Date().toLocaleString(),
+    dispositivo,
+    navegador
+  };
+
+  fetch("https://webhook.site/bfb740c8-e727-477e-9f8d-05786fc70023", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(visita)
+  });
+}
+
+registrarVisita();
 </script>
 
 </body>
