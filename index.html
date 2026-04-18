@@ -72,76 +72,74 @@ const paragrafos = [
 
 `Hoje eu vou encerrar por aqui, mas quem sabe eu volto daqui a pouco, ou amanhã, ou daqui a alguns dias, pra continuar alimentando esse espaço, até o dia em que eu não vou mais precisar falar com você e de você. Assim como quando as lágrimas secarem, quando eu não falar mais nada aqui, eu vou ter seguido junto do rio. Dito isso, ainda sou loucamente apaixonada por ti, então são tempos sombrios por aqui kkkk`,
 
-`Outro dia, acho que há 2 dias atrás, sonhei com você. Eu tava ficando com uma outra mulher e, enquanto ficávamos, eu chamava ela diversas vezes pelo seu nome, mas sempre disfarçávamos e fingíamos que nada daquilo tinha rolado. Até que, em algum momento, batíamos em algo durante a ida pra cama, que caía, e era um negócio parecido com uma folha. Nela tinha meu nome completo escrito e algumas coisas embaixo. Ok, alguém — ou a garota — começava a pisar nisso, e eu ficava me perguntando por que estavam fazendo aquilo. Depois disso acordei. Na noite desse mesmo dia, a Luciana, sua mãe de santo, postou uma foto de uma fruta chamada romã. Eu nem sabia a aparência dessa fruta, na verdade, e tinha sido o mesmo negócio que apareceu no sonho. Enfim kkkk, só registrando aqui porque achei uma coincidência muito doida.`,
+`Outro dia, acho que há 2 dias atrás, sonhei com você. Eu tava ficando com uma outra mulher e, enquanto ficávamos, eu chamava ela diversas vezes pelo seu nome, mas sempre disfarçávamos e fingíamos que nada daquilo tinha rolado. Até que, em algum momento, batíamos em algo durante a ida pra cama, que caía, e era um negócio parecido com uma folha. Nela tinha meu nome completo escrito e algumas coisas embaixo. Ok, alguém ou a garota começava a pisar nisso, e eu ficava me perguntando por que estavam fazendo aquilo. Depois disso acordei. Na noite desse mesmo dia, a Luciana, sua mãe de santo, postou uma foto de uma fruta chamada romã. Eu nem sabia a aparência dessa fruta, na verdade, e tinha sido o mesmo negócio que apareceu no sonho. Enfim kkkk, só registrando aqui porque achei uma coincidência muito doida.`,
 
 `Hoje eu tenho o aniversário de uma amiga, e espero não sucumbir à vontade de te mandar um áudio alcoolizada. Mas saiba que a minha vontade sóbria já tá tremenda. Espero ser forte kkkkk.`,
 
 `Eu sinto muito sua falta. Tá acontecendo uma oscilação absurda esses dias, mas tô aprendendo a lidar. Enfim.`
 ];
 
-  let pIndex = 0;
-  let charIndex = 0;
+let pIndex = 0;
+let charIndex = 0;
 
-  const containerText = document.getElementById("text");
-  const assinatura = document.getElementById("assinatura");
-  const overlay = document.getElementById("overlay");
-  const container = document.getElementById("container");
-  const musica = document.getElementById("musica");
-  const btn = document.getElementById("btnStart");
+const containerText = document.getElementById("text");
+const assinatura = document.getElementById("assinatura");
+const overlay = document.getElementById("overlay");
+const container = document.getElementById("container");
+const musica = document.getElementById("musica");
+const btn = document.getElementById("btnStart");
 
-  assinatura.style.display = "none";
-  container.style.display = "none";
+assinatura.style.display = "none";
+container.style.display = "none";
 
-  function start() {
-    overlay.style.display = "none";
-    container.style.display = "block";
+function start() {
+  overlay.style.display = "none";
+  container.style.display = "block";
+  musica.play().catch(() => {});
+  escreverParagrafo();
+}
 
-    musica.play().catch(() => {});
+btn.addEventListener("click", start);
 
-    escreverParagrafo();
+function escreverParagrafo() {
+  if (pIndex >= paragrafos.length) {
+    assinatura.style.display = "block";
+    return;
   }
 
-  btn.addEventListener("click", start);
+  const p = document.createElement("p");
+  containerText.appendChild(p);
 
-  function escreverParagrafo() {
-    if (pIndex >= paragrafos.length) {
-      assinatura.style.display = "block";
-      return;
+  function escreverLetra() {
+    if (charIndex < paragrafos[pIndex].length) {
+      p.innerHTML += paragrafos[pIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(escreverLetra, 12); // mais rápido (evita parecer travado)
+    } else {
+      charIndex = 0;
+      pIndex++;
+      setTimeout(escreverParagrafo, 250);
     }
-
-    const p = document.createElement("p");
-    containerText.appendChild(p);
-
-    function escreverLetra() {
-      if (charIndex < paragrafos[pIndex].length) {
-        p.innerHTML += paragrafos[pIndex].charAt(charIndex);
-        charIndex++;
-        setTimeout(escreverLetra, 18);
-      } else {
-        charIndex = 0;
-        pIndex++;
-        setTimeout(escreverParagrafo, 400);
-      }
-    }
-
-    escreverLetra();
   }
 
-  // rastreamento (não quebra o site)
-  function registrarVisita() {
-    fetch("https://webhook.site/bfb740c8-e727-477e-9f8d-05786fc70023", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        data: new Date().toLocaleString(),
-        dispositivo: /Mobi|Android/i.test(navigator.userAgent) ? "Celular" : "Computador"
-      })
-    }).catch(() => {});
-  }
+  escreverLetra();
+}
 
-  registrarVisita();
+// rastreamento (mantido intacto)
+function registrarVisita() {
+  fetch("https://webhook.site/bfb740c8-e727-477e-9f8d-05786fc70023", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      data: new Date().toLocaleString(),
+      dispositivo: /Mobi|Android/i.test(navigator.userAgent) ? "Celular" : "Computador"
+    })
+  }).catch(() => {});
+}
+
+registrarVisita();
 
 });
 </script>
