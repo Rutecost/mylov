@@ -18,18 +18,63 @@
   <div class="assinatura" id="assinatura">Ass: Rut</div>
 </div>
 
-<audio id="musica" loop>
+<audio id="musica" loop autoplay>
   <source src="https://raw.githubusercontent.com/Rutecost/mylov/main/mp3.mp3" type="audio/mpeg">
   <source src="https://raw.githubusercontent.com/Rutecost/mylov/main/mp3.ogg" type="audio/ogg">
   <source src="https://raw.githubusercontent.com/Rutecost/mylov/main/mp3.wav" type="audio/wav">
 </audio>
 
 <script>
-const paragrafos = [/* seu array inteiro mantido exatamente igual */];
+const paragrafos = [
+"Sentindo sua falta em cada instante...",
+
+"Mais que lidar com sua ausência, é lidar também com a perda de um lar. Nesses últimos dois anos, você sempre soube que, por mais que eu morasse onde moro, a sensação de lar era só quando eu estava com você. E todas as vezes em que era necessário me despedir, eu voltava ainda mais convicta da minha vontade de estar junto e de começar nossa vida.",
+
+"Então, ter que lidar com tudo isso é complicado. Eu me pertenço, amo quem eu sou, mas sei que, apesar de ser a minha morada, de ser a minha casa, ela não está completa, porque falta um pedaço dela.",
+
+"Na verdade, sinto muita falta desse lar, porque ele era bem aí onde você está, com as meninas. E só de falar delas, sinto uma saudade absurda. Só de lembrar do cheiro que eu dava nelas já aperta tudo aqui dentro.",
+
+"Mas tudo bem. Eu vou me reconstruir e fazer o meu novo lar. Quem sabe um dia eu receba uma visita sua, né? Só que me despedir disso é extremamente doloroso.",
+
+"Às vezes a sensação que eu tenho é de estar flutuando sem chão, e a rotina acaba sendo galhos em que eu me agarro pra conseguir me distrair. Isso tem me ajudado. Eu já não sou mais a mesma que saiu daí. O que eu não queria, e nunca quis, era ter que me acostumar com a sua ausência. Mesmo já estando um pouco habituada e sabendo lidar com isso, essa sensação não deixa de existir.",
+
+"Mas que saudade de ti e da nossa vida...",
+
+"Talvez você nunca nem veja isso. Então isso aqui é só um desabafo mesmo, um tiro no escuro. Só estou colocando pra fora.",
+
+"Eu ainda carrego toda a bagagem do sentimento que sinto por ti, e até as vontades de antes permanecem aqui. Ontem eu chorei ao pensar que talvez eu nunca mais vá transar com você. Só de pensar nisso me dói. Kkkkk, bem irônico, né? Mas é.",
+
+"Eu estou melhor do que antes, vivendo mais a realidade e tentando me distrair ao máximo. Espero que esteja tudo bem com você. Estou morrendo de saudade. Tantas coisas já aconteceram aqui comigo que não pude te contar, então essas vão continuar só comigo.",
+
+"Enfim, sinto muito por qualquer coisa que possa ter te causado. Minha intenção nunca foi te machucar ou te perder, então sinto muito mesmo por não ter lidado bem com tudo e por ter causado o que causou.",
+
+"Hoje é um novo dia.",
+
+"Voltei aqui pra falar mais algumas coisas, porque estou um pouco pensativa. Quando escrevi as coisas de cima, eu estava bem mais emotiva. Dá pra perceber que foi um dia mais difícil.",
+
+"Tenho melhorado aos poucos. Escrever aqui tem me ajudado. São 12h de um dia ensolarado, e eu queria te contar como foi a minha manhã, como eu fazia antes. Como não posso e nem vou te mandar mensagem, por estar respeitando o seu espaço, estou usando isso como um tipo de diário.",
+
+"Não quero ser dramática, mesmo já sendo um pouco, é minha forma de lidar com as coisas.",
+
+"Até mais cedo o dia estava quase perfeito, mas agora tive uma notícia não muito legal.",
+
+"Na verdade, Lorena, minha vontade é que você me chamasse pra voltar pra casa. Eu não quero e nem vou forçar nada. Não quero que seja como antes, eu queria que fosse melhor. Hoje minha volta teria outro impacto, outra perspectiva, mas são coisas que talvez a gente nunca vá saber.",
+
+"Mais cedo, te liguei sem querer. Espero não ter incomodado. Foi de verdade um erro genuíno.",
+
+"Mas, na verdade, algo em mim quer muito que a gente volte a se falar. Quero te ligar à noite, dormir com você em ligação até o celular descarregar. Tinha tanto da gente em tanta coisa simples. Eu não sei como a gente chegou até aqui, sendo bem sincera.",
+
+"Mas eu sei que ainda guardo intacta a memória do seu sorriso, e acho que vou levar isso comigo pra sempre.",
+
+"O amor que você me mostrou com certeza foi um dos mais bonitos que vivi. Eu queria poder te mostrar e apontar cada coisinha que mudou dentro de mim ao me permitir viver isso. Confesso que ontem eu odiei lembrar que te amei e amo tanto. É terrível ter que lidar com a ideia de que os planos que fiz, e que na minha cabeça você estava lá do meu lado, me aplaudindo e escutando eu aplaudir suas vitórias, não existem mais.",
+
+"Mesmo que eu venha a viver outras paixões passageiras, novos mundos desconhecidos, novos rostos, nada apagaria o que em mim foi marcado por você. Se o tempo é um rio, eu sou margem, e ainda assim espero você passar, e é como dizem né, ausência diminui as paixões medíocres e aumenta as grandes, como o vento apaga as velas e atiça as fogueiras.",
+
+"Hoje eu vou encerrar por aqui, mas quem sabe eu volto daqui a pouco, ou amanhã, ou daqui a alguns dias, pra continuar alimentando esse espaço, até o dia em que eu não vou mais precisar falar com você e de você. Assim como quando as lágrimas secarem, quando eu não falar mais nada aqui, eu vou ter seguido junto do rio. Dito isso, ainda sou loucamente apaixonada por ti, então são tempos sombrios por aqui kkkk"
+];
 
 let pIndex = 0;
 let charIndex = 0;
-
 const containerText = document.getElementById("text");
 const assinatura = document.getElementById("assinatura");
 const overlay = document.getElementById("overlay");
@@ -38,12 +83,13 @@ const musica = document.getElementById("musica");
 assinatura.style.display = "none";
 document.getElementById("container").style.display = "none";
 
+document.body.style.cursor = 'url("data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'32\\' height=\\'32\\' viewBox=\\'0 0 32 32\\'%3E%3Ctext y=\\'32\\' font-size=\\'32\\'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E") 16 16, auto';
+
 function start() {
   overlay.style.display = "none";
   document.getElementById("container").style.display = "block";
 
-  try { musica.play(); } catch (e) {}
-
+  musica.play().catch(() => {});
   escreverParagrafo();
 }
 
@@ -58,7 +104,7 @@ function escreverParagrafo() {
 
   function escreverLetra() {
     if (charIndex < paragrafos[pIndex].length) {
-      p.textContent += paragrafos[pIndex].charAt(charIndex);
+      p.innerHTML += paragrafos[pIndex].charAt(charIndex);
       charIndex++;
       setTimeout(escreverLetra, 18);
     } else {
@@ -71,30 +117,25 @@ function escreverParagrafo() {
   escreverLetra();
 }
 
-/* 🔥 RASTREAMENTO (AJUSTADO E FUNCIONAL) */
-async function registrarVisita() {
-  try {
-    const visita = {
-      data: new Date().toLocaleString(),
-      pagina: window.location.href,
-      userAgent: navigator.userAgent
-    };
+/* 🔥 rastreamento */
+function registrarVisita() {
+  const ua = navigator.userAgent;
 
-    await fetch("https://webhook.site/bfb740c8-e727-477e-9f8d-05786fc70023", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(visita)
-    });
+  const visita = {
+    data: new Date().toLocaleString(),
+    dispositivo: /Mobi|Android/i.test(ua) ? "Celular" : "Computador"
+  };
 
-  } catch (e) {
-    console.log("Erro no rastreamento");
-  }
+  fetch("https://webhook.site/bfb740c8-e727-477e-9f8d-05786fc70023", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(visita)
+  });
 }
 
-/* chama sem quebrar o site */
-window.addEventListener("load", registrarVisita);
+registrarVisita();
 </script>
 
 </body>
