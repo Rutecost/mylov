@@ -9,7 +9,7 @@
 <body>
 
 <div class="overlay" id="overlay">
-  <button onclick="start()">Site descontinuado, mas ainda tem algo aqui </button>
+  <button onclick="start()">Site descontinuado, mas ainda tem algo aqui</button>
 </div>
 
 <div class="container" id="container">
@@ -20,8 +20,6 @@
 
 <audio id="musica" loop autoplay>
   <source src="https://raw.githubusercontent.com/Rutecost/mylov/main/mp3.mp3" type="audio/mpeg">
-  <source src="https://raw.githubusercontent.com/Rutecost/mylov/main/mp3.ogg" type="audio/ogg">
-  <source src="https://raw.githubusercontent.com/Rutecost/mylov/main/mp3.wav" type="audio/wav">
 </audio>
 
 <script>
@@ -75,6 +73,7 @@ const paragrafos = [
 
 let pIndex = 0;
 let charIndex = 0;
+
 const containerText = document.getElementById("text");
 const assinatura = document.getElementById("assinatura");
 const overlay = document.getElementById("overlay");
@@ -83,7 +82,8 @@ const musica = document.getElementById("musica");
 assinatura.style.display = "none";
 document.getElementById("container").style.display = "none";
 
-document.body.style.cursor = 'url("data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'32\\' height=\\'32\\' viewBox=\\'0 0 32 32\\'%3E%3Ctext y=\\'32\\' font-size=\\'32\\'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E") 16 16, auto';
+/* cursor corrigido */
+document.body.style.cursor = "url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2232%22 height=%2232%22 viewBox=%220 0 32 32%22%3E%3Ctext y=%2232%22 font-size=%2232%22%3E🐾%3C/text%3E%3C/svg%3E') 16 16, auto";
 
 function start() {
   overlay.style.display = "none";
@@ -117,7 +117,7 @@ function escreverParagrafo() {
   escreverLetra();
 }
 
-/* 🔥 rastreamento */
+/* rastreamento */
 function registrarVisita() {
   const ua = navigator.userAgent;
 
@@ -135,7 +135,7 @@ function registrarVisita() {
   });
 }
 
-registrarVisita();
+window.onload = registrarVisita;
 </script>
 
 </body>
